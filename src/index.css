@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+/* Display font — headings and big numbers */
+.font-display {
+  font-family: 'Russo One', sans-serif;
+}
+
+/* Data / numeric labels */
+.font-data {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Animations ── */
+
+@keyframes slotFlip {
+  from { transform: translateY(10px); opacity: 0.2; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.slot-tick {
+  animation: slotFlip var(--slot-dur, 65ms) ease-out both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slotFill {
+  0%   { transform: scale(0.55); opacity: 0; }
+  70%  { transform: scale(1.08); }
+  100% { transform: scale(1);    opacity: 1; }
+}
+.slot-fill {
+  animation: slotFill 350ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px 0 rgba(52, 211, 153, 0.4); }
+  50%       { box-shadow: 0 0 18px 2px rgba(52, 211, 153, 0.7); }
+}
+.glow-emerald {
+  animation: pulse-glow 2.4s ease-in-out infinite;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .slot-tick,
+  .slot-fill,
+  .glow-emerald {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ── Global ── */
+
+body {
+  margin: 0;
+  background: #0a0a0f;
+  color: #e5e7eb;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+/* Every button is a pointer — no exceptions */
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Focus rings — visible but not ugly */
+:focus-visible {
+  outline: 2px solid rgba(52, 211, 153, 0.7);
+  outline-offset: 2px;
+}
+
+/* Prevent layout shift on tall screens */
+html {
+  scroll-behavior: smooth;
+}
