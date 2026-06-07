@@ -8,11 +8,11 @@ type Props = {
 }
 
 const STAT_LABELS = [
-  { key: 'goalsPerGame' as const, label: 'G/G' },
-  { key: 'keyPassesPerGame' as const, label: 'KP/G' },
-  { key: 'cleanSheetPct' as const, label: 'CS%' },
-  { key: 'tacklesPerGame' as const, label: 'TKL/G' },
-  { key: 'dribblesPerGame' as const, label: 'DRB/G' },
+  { key: 'goalsPerSeason' as const,      label: 'G/SZN' },
+  { key: 'assistsPerSeason' as const,    label: 'AST' },
+  { key: 'cleanSheetPct' as const,       label: 'CS%' },
+  { key: 'savePct' as const,             label: 'SV%' },
+  { key: 'defActionsPerSeason' as const, label: 'DEF' },
 ]
 
 export function PlayerCard({ player, selected, mode, onClick }: Props) {
@@ -44,9 +44,9 @@ export function PlayerCard({ player, selected, mode, onClick }: Props) {
                 mode === 'scoutiq' ? 'blur-sm select-none' : ''
               }`}
             >
-              {key === 'cleanSheetPct'
-                ? `${player.stats[key]}%`
-                : player.stats[key].toFixed(2)}
+              {(key === 'cleanSheetPct' || key === 'savePct')
+                ? `${player.stats[key].toFixed(1)}%`
+                : player.stats[key].toFixed(1)}
             </div>
           </div>
         ))}
