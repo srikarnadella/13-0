@@ -13,7 +13,7 @@ export function StatBar({ label, value, detail }: Props) {
 
   return (
     <div className="flex items-center gap-3">
-      <span className="w-36 text-xs text-gray-500 shrink-0 text-right">{label}</span>
+      <span className="w-24 sm:w-36 text-xs text-gray-500 shrink-0 text-right">{label}</span>
       <div className="flex-1 h-2.5 bg-white/8 rounded-full overflow-hidden">
         <div
           className={`h-full rounded-full transition-all duration-500 ${color} ${glow}`}

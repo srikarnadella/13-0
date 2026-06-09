@@ -23,9 +23,9 @@ export function FormationSpin({ onLockIn }: Props) {
   }
 
   return (
-    <div className="flex flex-col items-center gap-10 fade-up">
+    <div className="flex flex-col items-center gap-8 sm:gap-10 fade-up px-4">
       <div className="text-center">
-        <h1 className="font-display text-6xl text-white mb-2 tracking-tight">
+        <h1 className="font-display text-4xl sm:text-6xl text-white mb-2 tracking-tight">
           Pick your formation
         </h1>
         <p className="text-gray-500 text-sm">Spin to land a formation, lock it in to start drafting</p>

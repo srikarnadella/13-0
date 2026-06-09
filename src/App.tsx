@@ -163,7 +163,7 @@ export default function App() {
       )}
 
       {state.phase === 'draft' && (
-        <div className="fade-up w-full h-screen"><DraftRound
+        <div className="fade-up w-full h-[100dvh]"><DraftRound
           state={state}
           onPick={(player, slotIndex) => dispatch({ type: 'PICK_PLAYER', player, slotIndex })}
           onClubSkip={() => dispatch({ type: 'CLUB_SKIP' })}

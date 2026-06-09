@@ -42,7 +42,7 @@ export function SimResult({ result, state, onPlayAgain }: Props) {
   }
 
   return (
-    <div className="w-full max-w-2xl mx-auto flex flex-col gap-8 fade-up">
+    <div className="w-full max-w-2xl mx-auto flex flex-col gap-5 sm:gap-8 fade-up px-4 sm:px-0">
 
       {/* Record hero */}
       <div className="text-center flex flex-col items-center gap-3">
@@ -54,11 +54,11 @@ export function SimResult({ result, state, onPlayAgain }: Props) {
           </div>
         )}
         <div className={`flex items-baseline gap-3 ${isPerfect ? 'glow-emerald rounded-2xl px-6 py-2' : ''}`}>
-          <span className={`font-display text-8xl leading-none tracking-tight ${isPerfect ? 'text-emerald-400' : 'text-white'}`}>
+          <span className={`font-display text-6xl sm:text-8xl leading-none tracking-tight ${isPerfect ? 'text-emerald-400' : 'text-white'}`}>
             {totalWins}
           </span>
-          <span className={`font-display text-5xl leading-none ${isPerfect ? 'text-emerald-600' : 'text-gray-600'}`}>–</span>
-          <span className={`font-display text-8xl leading-none tracking-tight ${isPerfect ? 'text-emerald-600' : 'text-gray-400'}`}>
+          <span className={`font-display text-4xl sm:text-5xl leading-none ${isPerfect ? 'text-emerald-600' : 'text-gray-600'}`}>–</span>
+          <span className={`font-display text-6xl sm:text-8xl leading-none tracking-tight ${isPerfect ? 'text-emerald-600' : 'text-gray-400'}`}>
             {totalLosses}
           </span>
         </div>

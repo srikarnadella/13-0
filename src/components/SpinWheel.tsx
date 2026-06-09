@@ -160,7 +160,7 @@ export function SpinWheel({ targetClub, targetEra, onSpinComplete }: Props) {
         {/* Team card */}
         <div className="flex flex-col items-center gap-2">
           <div className={`
-            w-40 h-28 rounded-2xl bg-[#13131e] flex flex-col items-center justify-center gap-2
+            w-32 h-24 sm:w-40 sm:h-28 rounded-2xl bg-[#13131e] flex flex-col items-center justify-center gap-2
             border-4 transition-all duration-300
             ${teamSettled
               ? 'border-amber-400 shadow-[0_0_40px_rgba(251,191,36,0.3)]'
@@ -172,15 +172,15 @@ export function SpinWheel({ targetClub, targetEra, onSpinComplete }: Props) {
             <span
               key={clubKey}
               className={`slot-tick font-black tracking-wider leading-none overflow-hidden ${
-                phase === 'idle' ? 'text-white/15 text-4xl' :
-                displayClub.length <= 3 ? 'text-4xl text-white' : 'text-3xl text-white'
+                phase === 'idle' ? 'text-white/15 text-2xl sm:text-4xl' :
+                displayClub.length <= 3 ? 'text-2xl sm:text-4xl text-white' : 'text-xl sm:text-3xl text-white'
               }`}
               style={{ '--slot-dur': clubDur } as React.CSSProperties}
             >
               {phase === 'idle' ? '—' : displayClub}
             </span>
           </div>
-          <span className="text-xs text-gray-500 max-w-40 text-center truncate">
+          <span className="text-xs text-gray-500 max-w-32 sm:max-w-40 text-center truncate">
             {teamSettled ? targetClub : 'Team'}
           </span>
         </div>
@@ -188,7 +188,7 @@ export function SpinWheel({ targetClub, targetEra, onSpinComplete }: Props) {
         {/* Era card */}
         <div className="flex flex-col items-center gap-2">
           <div className={`
-            w-40 h-28 rounded-2xl bg-[#13131e] flex flex-col items-center justify-center gap-2
+            w-32 h-24 sm:w-40 sm:h-28 rounded-2xl bg-[#13131e] flex flex-col items-center justify-center gap-2
             border-4 transition-all duration-300
             ${eraSettled
               ? 'border-purple-400 shadow-[0_0_40px_rgba(192,132,252,0.3)]'
@@ -199,7 +199,7 @@ export function SpinWheel({ targetClub, targetEra, onSpinComplete }: Props) {
             <span className="text-[10px] font-bold tracking-[0.25em] text-orange-400 uppercase">Era</span>
             <span
               key={eraKey}
-              className={`slot-tick text-4xl font-black tracking-wider leading-none overflow-hidden ${
+              className={`slot-tick text-2xl sm:text-4xl font-black tracking-wider leading-none overflow-hidden ${
                 phase === 'idle' ? 'text-white/15' : 'text-white'
               }`}
               style={{ '--slot-dur': eraDur } as React.CSSProperties}

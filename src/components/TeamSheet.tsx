@@ -32,7 +32,7 @@ export function TeamSheet({ state, onSimulate }: Props) {
     return (
       <div key={i} className="flex flex-col items-center gap-1">
         <div className={`
-          w-14 h-14 rounded-full border-2 flex items-center justify-center text-xs font-semibold
+          w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 flex items-center justify-center text-[10px] sm:text-xs font-semibold
           ${filled
             ? 'border-emerald-400 bg-emerald-400/20 text-emerald-300'
             : 'border-dashed border-white/20 text-gray-600'
@@ -44,7 +44,7 @@ export function TeamSheet({ state, onSimulate }: Props) {
           }
         </div>
         {filled && (
-          <div className="text-xs text-gray-400 text-center max-w-16 leading-tight truncate">
+          <div className="text-[10px] sm:text-xs text-gray-400 text-center max-w-12 sm:max-w-16 leading-tight truncate">
             {slot.player!.name.split(' ').at(-1)}
           </div>
         )}
@@ -53,7 +53,7 @@ export function TeamSheet({ state, onSimulate }: Props) {
   }
 
   return (
-    <div className="w-full max-w-2xl mx-auto flex flex-col gap-6">
+    <div className="w-full max-w-2xl mx-auto flex flex-col gap-6 px-4 sm:px-0">
       <div className="text-sm text-gray-400 text-center">Your XI is complete</div>
 
       {/* Pitch */}

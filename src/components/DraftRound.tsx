@@ -256,10 +256,10 @@ export function DraftRound({ state, onPick, onClubSkip, onEraSkip, onSpinResult 
 
   // ── RENDER ─────────────────────────────────────────────────────────────────
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex flex-col md:flex-row h-[100dvh] overflow-hidden">
 
       {/* LEFT PANEL */}
-      <div className="flex flex-col w-[400px] shrink-0 border-r border-white/10">
+      <div className="flex flex-col w-full md:w-[400px] md:shrink-0 border-b md:border-b-0 md:border-r border-white/10 flex-1 md:flex-none overflow-hidden">
 
         {phase === 'spin' ? (
           <div className="flex-1 flex flex-col items-center justify-center gap-6 px-4">
@@ -281,12 +281,12 @@ export function DraftRound({ state, onPick, onClubSkip, onEraSkip, onSpinResult 
         ) : (
           <>
             {/* Header: round + spin result + skips */}
-            <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/10">
+            <div className="flex items-center gap-2 px-3 py-2 border-b border-white/10 flex-wrap">
               <div className="text-xs text-gray-600 font-medium shrink-0">
-                Round {currentRound + 1}/{positionSlots.length}
+                <span className="hidden sm:inline">Round </span>{currentRound + 1}/{positionSlots.length}
               </div>
               {currentSpin && (
-                <div className="flex items-center gap-1.5 ml-1">
+                <div className="flex items-center gap-1.5">
                   <span className="relative group px-2 py-0.5 rounded-md bg-white/10 text-white text-xs font-bold cursor-default">
                     {currentSpin.club.split(' ').map(w => w[0]).join('').slice(0, 3).toUpperCase()}
                     <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block z-50">
@@ -300,12 +300,19 @@ export function DraftRound({ state, onPick, onClubSkip, onEraSkip, onSpinResult 
                   </span>
                 </div>
               )}
-              <div className="ml-auto flex items-center gap-1.5">
+              {/* Projected wins — visible on mobile only (desktop shows in right panel) */}
+              {projWins !== null && (
+                <div className="md:hidden flex items-center gap-1 ml-auto mr-1">
+                  <span className="text-[10px] text-gray-600">Proj</span>
+                  <span className="font-display text-xs text-white">{projWins}–{13 - projWins}</span>
+                </div>
+              )}
+              <div className={`flex items-center gap-1.5 ${projWins !== null ? '' : 'ml-auto'}`}>
                 <button
                   onClick={handleClubSkip}
                   disabled={clubSkipUsed}
                   title="Re-roll club (keep era)"
-                  className={`px-2 py-1 rounded text-xs font-medium border transition-all ${
+                  className={`px-2.5 py-1.5 rounded text-xs font-medium border transition-all ${
                     clubSkipUsed
                       ? 'border-white/5 text-gray-700 line-through cursor-not-allowed'
                       : 'border-white/20 text-gray-400 hover:bg-white/10 cursor-pointer'
@@ -317,7 +324,7 @@ export function DraftRound({ state, onPick, onClubSkip, onEraSkip, onSpinResult 
                   onClick={handleEraSkip}
                   disabled={eraSkipUsed}
                   title="Re-roll era (keep club)"
-                  className={`px-2 py-1 rounded text-xs font-medium border transition-all ${
+                  className={`px-2.5 py-1.5 rounded text-xs font-medium border transition-all ${
                     eraSkipUsed
                       ? 'border-white/5 text-gray-700 line-through cursor-not-allowed'
                       : 'border-white/20 text-gray-400 hover:bg-white/10 cursor-pointer'
@@ -422,8 +429,8 @@ export function DraftRound({ state, onPick, onClubSkip, onEraSkip, onSpinResult 
         )}
       </div>
 
-      {/* RIGHT PANEL */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      {/* RIGHT PANEL — hidden on mobile, visible md+ */}
+      <div className="hidden md:flex flex-1 flex-col overflow-hidden">
         <Pitch />
         <StatBars />
       </div>

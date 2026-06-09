@@ -60,7 +60,7 @@ export function SlotReel({ values, finalValue, spinning, delay = 0, onSettled }:
 
   return (
     <div className={`
-      w-24 h-24 rounded-xl border flex items-center justify-center overflow-hidden
+      w-16 h-16 sm:w-24 sm:h-24 rounded-xl border flex items-center justify-center overflow-hidden
       transition-all duration-400
       ${settled
         ? 'border-emerald-400 text-emerald-400 bg-emerald-400/10 shadow-[0_0_24px_rgba(52,211,153,0.2)]'
@@ -70,7 +70,7 @@ export function SlotReel({ values, finalValue, spinning, delay = 0, onSettled }:
     `}>
       <span
         key={displayKey}
-        className="slot-tick font-display text-5xl"
+        className="slot-tick font-display text-3xl sm:text-5xl"
         style={{ '--slot-dur': settled ? '300ms' : spinning ? '65ms' : '0ms' } as React.CSSProperties}
       >
         {display}
